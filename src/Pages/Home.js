@@ -5,9 +5,9 @@ import HighlightText from '../components/core/HomePage/HighlightText'
 import CTAButton from '../components/core/HomePage/Button'
 import Banner from "../assets/App.mp4"
 // import BannerI from "../assets/banner.jpg"
+
 import CodeBlocks from '../components/core/HomePage/CodeBlocks'
 function Home() {
-
     return (
         <div className='relative mx-auto flex flex-col w-11/12 items-center max-w-maxContent
          text-white justify-between'>
@@ -48,7 +48,7 @@ function Home() {
                     <source src={Banner} type="video/mp4"></source>
                 </video>
             </div>
-
+            {/* Code section 2 */}
             <div>
                 <CodeBlocks
                     position={"lg:flex-row"}
@@ -67,6 +67,56 @@ function Home() {
                             linkto: "/signup",
                             active: true
                         }
+                    }
+                    ctabtn2={
+                        {
+                            btnText: "Learn More",
+                            linkto: "/login",
+                            active: false
+                        }
+                    }
+                    codeblock={
+                        `<<!DOCTYPE HTML>>\n <html>\n<head>>`
+                    }
+                    codeColor={
+                        "text-yellow-25"
+                    }
+
+
+                />
+            </div>
+            {/* Code section 2 */}
+            <div>
+                <CodeBlocks
+                    position={"lg:flex-row-reverse"}
+                    heading={
+                        <div className='text-4xl font-semibold'>
+                            Unlock Your <HighlightText text={"Coding potential"} />
+                            with our online courses
+                        </div>
+                    }
+                    subheading={
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, "
+                    }
+                    ctabtn1={
+                        {
+                            btnText: "Try it Yourself",
+                            linkto: "/signup",
+                            active: true
+                        }
+                    }
+                    ctabtn2={
+                        {
+                            btnText: "Learn More",
+                            linkto: "/login",
+                            active: false
+                        }
+                    }
+                    codeblock={
+                        `<<!DOCTYPE HTML>>\n <html>\n<head>>`
+                    }
+                    codeColor={
+                        "text-yellow-25"
                     }
 
 
