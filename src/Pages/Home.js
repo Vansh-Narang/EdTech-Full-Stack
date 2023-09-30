@@ -1,6 +1,8 @@
 import "../App.css"
 import React from 'react'
 import { Link } from "react-router-dom"
+import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection"
+import TimeLineSection from "../components/core/HomePage/LearningLanguageSection"
 import { FaArrowRight } from "react-icons/fa"
 import HighlightText from '../components/core/HomePage/HighlightText'
 import CTAButton from '../components/core/HomePage/Button'
@@ -160,8 +162,27 @@ function Home() {
                     </div>
                 </div>
                 <div className="mx-auto w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-7">
-                    
+                    <div className="flex flex-row gap-5 mb-10 mt-[95px]">
+                        <div className="text-4xl font-semibold w-[45%]">
+                            Get the skill you need for a <HighlightText text={"Job that is in demand"} />
+                        </div>
+
+                        <div className="flex flex-col gap-10 w-[40%] items-start">
+                            <div className="text-[16px]">
+                                Lorem ipsum dolor sit amet, consectetur adip Lorem ipsum Lorem ipsum dolor sit amet, consectet
+                            </div>
+                            <CTAButton active={true} linkto={"/signup"}>
+                                <div>
+                                    Learn more
+                                </div>
+                            </CTAButton >
+                        </div>
+                    </div>
+                    <TimeLineSection />
+                    <LearningLanguageSection />
                 </div>
+
+
             </div>
             {/* Section 3  */}
             {/* Footer 4  */}
