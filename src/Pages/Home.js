@@ -2,7 +2,7 @@ import "../App.css"
 import React from 'react'
 import { Link } from "react-router-dom"
 import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection"
-import TimeLineSection from "../components/core/HomePage/LearningLanguageSection"
+import TimeLineSection from "../components/core/HomePage/TimelineSection"
 import { FaArrowRight } from "react-icons/fa"
 import HighlightText from '../components/core/HomePage/HighlightText'
 import CTAButton from '../components/core/HomePage/Button'
