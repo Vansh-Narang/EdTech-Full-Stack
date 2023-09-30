@@ -1,7 +1,11 @@
 import React from 'react'
 import HighlightText from './HighlightText'
 import CTAButton from "../HomePage/Button"
-import banner from "../../../assets/banner.jpg"
+// import banner from "../../../assets/asset 5.png"
+import Knowyourprogress from "../../../assets/asset 6.png"
+import Knowyourprogress1 from "../../../assets/asset 7.svg"
+import Knowyourprogress2 from "../../../assets/asset 8.svg"
+
 function LearningLanguageSection() {
   return (
     <div className='mt-[130px]'>
@@ -15,9 +19,9 @@ function LearningLanguageSection() {
           </p>
         </div>
         <div className='flex flex-row items-center mt-5'>
-          <img src={banner} alt="Know your progress" className='w-[500px] object-contain' />
-          <img src={banner} alt="Know your progress" className='w-[500px] object-contain' />
-          <img src={banner} alt="Know your progress" className='w-[500px] object-contain' />
+          <img src={Knowyourprogress} alt="Know your progress" className='w-[500px] object-contain' />
+          <img src={Knowyourprogress1} alt="Know your progress" className='w-[500px] object-contain' />
+          <img src={Knowyourprogress2} alt="Know your progress" className='w-[500px] object-contain' />
         </div>
         <div className='w-[100px] flex items-center'>
           <CTAButton active={true} linkto={"/signup"} >
