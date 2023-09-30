@@ -1,5 +1,6 @@
 import "../App.css"
 import React from 'react'
+
 import { Link } from "react-router-dom"
 import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection"
 import TimeLineSection from "../components/core/HomePage/TimelineSection"
@@ -8,7 +9,7 @@ import HighlightText from '../components/core/HomePage/HighlightText'
 import CTAButton from '../components/core/HomePage/Button'
 import Banner from "../assets/App.mp4"
 // import BannerI from "../assets/banner.jpg"
-
+import InstructorSection from "../components/core/HomePage/Instructor"
 import CodeBlocks from '../components/core/HomePage/CodeBlocks'
 function Home() {
     return (
@@ -96,7 +97,6 @@ function Home() {
 
                     />
                 </div>
-                {/* Code section 2 */}
                 <div>
                     <CodeBlocks
                         position={"lg:flex-row-reverse"}
@@ -141,6 +141,7 @@ function Home() {
                 </div>
                 {/*/////////////////////// Section 1 completed//////////////////////// */}
             </div>
+            {/* Code section 2 */}
             {/* Section 2  */}
             <div className='bg-pure-greys-5 text-richblack-700'>
                 <div className='homepage_bg h-[310px]'>
@@ -181,10 +182,15 @@ function Home() {
                     <TimeLineSection />
                     <LearningLanguageSection />
                 </div>
-
-
             </div>
             {/* Section 3  */}
+            <div>
+                <div className=" w-11 /12 flex flex-col mx-auto max-w-maxContent items-center justify-between gap-8 text-white">
+                    <InstructorSection />
+                    <h2 className="text-4xl font-semibold mt-10 text-center">Review from other learners</h2>
+                    {/* Review Slider */}
+                </div>
+            </div >
             {/* Footer 4  */}
         </>
     )
