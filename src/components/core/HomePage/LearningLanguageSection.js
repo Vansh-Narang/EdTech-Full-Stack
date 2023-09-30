@@ -8,7 +8,7 @@ import Knowyourprogress2 from "../../../assets/asset 8.svg"
 
 function LearningLanguageSection() {
   return (
-    <div className='mt-[130px]'>
+    <div className='mt-[130px] mb-28'>
       <div className='flex flex-col gap-5 items-center'>
         <div className='text-4xl font-bold text-center'>
           Your swiss knife for <HighlightText text={"learning any language"} />

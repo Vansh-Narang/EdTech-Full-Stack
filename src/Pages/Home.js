@@ -1,6 +1,6 @@
 import "../App.css"
 import React from 'react'
-
+import Footer from "../components/Common/Footer"
 import { Link } from "react-router-dom"
 import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection"
 import TimeLineSection from "../components/core/HomePage/TimelineSection"
@@ -185,13 +185,14 @@ function Home() {
             </div>
             {/* Section 3  */}
             <div>
-                <div className=" w-11 /12 flex flex-col mx-auto max-w-maxContent items-center justify-between gap-8 text-white">
+                <div className=" w-11/12 flex flex-col mx-auto max-w-maxContent items-center justify-between gap-8 text-white">
                     <InstructorSection />
                     <h2 className="text-4xl font-semibold mt-10 text-center">Review from other learners</h2>
                     {/* Review Slider */}
                 </div>
             </div >
             {/* Footer 4  */}
+            <Footer />
         </>
     )
 }
