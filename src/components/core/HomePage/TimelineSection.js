@@ -3,7 +3,8 @@ import Logo1 from "../../../assets/TimeLineLogo/Logo1.svg"
 // import Logo2 from "../../../assets/TimeLineLogo/Logo1.svg"
 // import Logo3 from "../../../assets/TimeLineLogo/Logo1.svg"
 // import Logo4 from "../../../assets/TimeLineLogo/Logo1.svg"
-import Banner from "../../../assets/banner.jpg"
+// import Banner from "../../../assets/banner.jpg"
+import Banner from "../../../assets/asset 5.png"
 
 const timeline = [
     {

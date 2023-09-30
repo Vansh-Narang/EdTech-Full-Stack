@@ -9,7 +9,7 @@ import Knowyourprogress2 from "../../../assets/asset 8.svg"
 function LearningLanguageSection() {
   return (
     <div className='mt-[130px]'>
-      <div className='flex flex-col gap-5'>
+      <div className='flex flex-col gap-5 items-center'>
         <div className='text-4xl font-bold text-center'>
           Your swiss knife for <HighlightText text={"learning any language"} />
         </div>
@@ -19,11 +19,11 @@ function LearningLanguageSection() {
           </p>
         </div>
         <div className='flex flex-row items-center mt-5'>
-          <img src={Knowyourprogress} alt="Know your progress" className='w-[500px] object-contain' />
+          <img src={Knowyourprogress} alt="Know your progress" className='w-[500px] object-contain -mr-32' />
           <img src={Knowyourprogress1} alt="Know your progress" className='w-[500px] object-contain' />
-          <img src={Knowyourprogress2} alt="Know your progress" className='w-[500px] object-contain' />
+          <img src={Knowyourprogress2} alt="Know your progress" className='w-[500px] object-contain -ml-36' />
         </div>
-        <div className='w-[100px] flex items-center'>
+        <div className='w-fit '>
           <CTAButton active={true} linkto={"/signup"} >
             <div>
               Learn More
