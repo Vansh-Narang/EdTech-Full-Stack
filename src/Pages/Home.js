@@ -11,6 +11,7 @@ import Banner from "../assets/App.mp4"
 // import BannerI from "../assets/banner.jpg"
 import InstructorSection from "../components/core/HomePage/Instructor"
 import CodeBlocks from '../components/core/HomePage/CodeBlocks'
+import ExploreMore from "../components/core/HomePage/ExploreMore"
 function Home() {
     return (
         <>
@@ -139,6 +140,7 @@ function Home() {
 
                     />
                 </div>
+                <ExploreMore />
                 {/*/////////////////////// Section 1 completed//////////////////////// */}
             </div>
             {/* Code section 2 */}
