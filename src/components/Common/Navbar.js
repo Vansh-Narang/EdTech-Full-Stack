@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, NavLink, matchPath } from "react-router-dom"
 import Logo from "../../assets/asset 0.png"
 import { NavbarLinks } from "../../data/navbar-links"
@@ -6,6 +6,8 @@ import { useLocation } from 'react-router-dom'
 import { useSelector } from "react-redux"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import ProfileDropDown from "../core/Auth/ProfileDropDown"
+import { apiConnector } from '../../services/apiconnector'
+import { categories } from '../../services/apis'
 function Navbar() {
 
     //fetch all the state from the reducer to see whether the user is logged in or not
@@ -13,7 +15,20 @@ function Navbar() {
     const { user } = useSelector((state) => state.profile);
     const { totalItems } = useSelector((state) => state.cart);
 
-
+    //use Effect make api call
+    const [subLinks, setSubLinks] = useState([])
+    const fetchSublinks = async () => {
+        try {
+            const result = await apiConnector("GET", categories.CATEGORIES_API)
+            console.log("printing result", result.data.data)
+            setSubLinks(result.data.data)
+        } catch (error) {
+            console.log("Couldnot fetch category", error.message)
+        }
+    }
+    useEffect(() => {
+        fetchSublinks();
+    }, [])
 
     const location = useLocation()
     const matchRoute = (route) => {
@@ -37,7 +52,7 @@ function Navbar() {
                                         {
                                             element.title === "Catalog" ? (
                                                 <div>
-
+                                                    <p>{element.title}</p>
                                                 </div>
                                             ) : (
                                                 <Link to={element?.path}>
