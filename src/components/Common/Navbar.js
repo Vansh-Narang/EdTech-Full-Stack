@@ -8,6 +8,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai"
 import ProfileDropDown from "../core/Auth/ProfileDropDown"
 import { apiConnector } from '../../services/apiconnector'
 import { categories } from '../../services/apis'
+import { IoIosArrowDropdownCircle } from "react-icons/io"
 function Navbar() {
 
     //fetch all the state from the reducer to see whether the user is logged in or not
@@ -51,8 +52,24 @@ function Navbar() {
                                     <li key={index}>
                                         {
                                             element.title === "Catalog" ? (
-                                                <div>
+                                                <div className='relative flex items-center gap-2 group'>
                                                     <p>{element.title}</p>
+                                                    <IoIosArrowDropdownCircle />
+
+                                                    <div className='invisible absolute translate-x-[-50%] translate-y-[20%]  left-[50%] top-[50%] flex flex-col rounded-md bg-richblack-5 p-4 text-richblack-900 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 lg:w-[300px]'>
+                                                        <div className='absolute left-[50%] top-0 h-6 w-6 rotate-45 rounded bg-richblack-5 translate-x-[90%] translate-y-[-20%]'>
+                                                        </div>
+                                                        {
+                                                            subLinks.length ? (
+                                                                subLinks.map((subLink, index) => (
+                                                                    <Link to="/about" key={index}>
+                                                                        <p>{subLink.name}</p>
+                                                                    </Link>
+                                                                )
+                                                                )
+                                                            ) : (<div></div>)
+                                                        }
+                                                    </div>
                                                 </div>
                                             ) : (
                                                 <Link to={element?.path}>
