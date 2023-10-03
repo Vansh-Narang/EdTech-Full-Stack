@@ -13,6 +13,8 @@ const initialState = {
     // for accessing in the future
 
     //if get the token from local storage then parse else set it to null
+    signupData: null,
+    loading: false,
     token: localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")) : null,
 };
 
