@@ -1,16 +1,24 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { getPasswordResetToken } from "../services/Operations/authApi"
 const ForgotPassword = () => {
+
+    const dispatch = useDispatch()
+
     const [emailSent, setEmailSent] = useState(false)
     const [email, setEmail] = useState("")
     const loading = useSelector((state) => state.auth)
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        dispatch(getPasswordResetToken(email, setEmailSent))
+    }
     return (
         //loading field in slices is used to see whether the loader has to be shown or not
-        <div>
+        <div className='text-white text-center'>
             {
-                loading ? (
-                    <div>Loading</div>
+                false ? (
+                    <div className=''>Loading</div>
                 ) : (
                     <div>
                         <h1>
@@ -23,7 +31,7 @@ const ForgotPassword = () => {
                                 !emailSent ? "Have no fear , We will email you how to reset your password" : ` Please check your email ${email}`
                             }
                         </p>
-                        <form>
+                        <form onSubmit={handleOnSubmit}>
                             {
                                 !emailSent && (
                                     < label >
@@ -33,7 +41,7 @@ const ForgotPassword = () => {
                                     </label>
                                 )
                             }
-                            <button>
+                            <button type="submit">
                                 {
                                     !emailSent ? "Reset password" : "Resend email"
                                 }
