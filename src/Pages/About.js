@@ -5,6 +5,8 @@ import Quote from "../components/core/About/Quote"
 import FoundingStory from "../assets/asset 9.png"
 import StatsComponent from '../components/core/About/StatsComponent'
 import LearningGrid from '../components/core/About/LearningData'
+import ContactFormSection from '../components/core/About/ContactFormSection';
+
 function About() {
     return (
         <div className='text-white mt-[100px] mx-auto w-11/12 max-w-maxContent'>
@@ -66,8 +68,9 @@ function About() {
             <StatsComponent />
 
             {/* section 5 */}
-            <section className='mx-auto flex items-center justify-center'>
+            <section className='mx-auto flex items-center justify-between gap-5 flex-col mb-[140px]'>
                 <LearningGrid />
+                <ContactFormSection />
             </section>
 
 
