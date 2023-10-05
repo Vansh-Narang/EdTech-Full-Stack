@@ -4,9 +4,10 @@ import Banner from "../assets/banner.jpg"
 import Quote from "../components/core/About/Quote"
 import FoundingStory from "../assets/asset 9.png"
 import StatsComponent from '../components/core/About/StatsComponent'
+import LearningGrid from '../components/core/About/LearningData'
 function About() {
     return (
-        <div className='text-white mt-[100px]'>
+        <div className='text-white mt-[100px] mx-auto w-11/12 max-w-maxContent'>
             {/* section 1 */}
             <section>
                 <div>
@@ -63,6 +64,11 @@ function About() {
 
             {/* section 4 */}
             <StatsComponent />
+
+            {/* section 5 */}
+            <section className='mx-auto flex items-center justify-center'>
+                <LearningGrid />
+            </section>
 
 
         </div >
