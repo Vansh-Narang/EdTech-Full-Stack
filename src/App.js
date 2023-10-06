@@ -9,6 +9,7 @@ import OpenRoute from "./components/core/Auth/OpenRoute"
 import UpdatePassword from './Pages/UpdatePassword';
 import VerfiyEmail from './Pages/VerfiyEmail';
 import About from './Pages/About';
+import Contact from "./Pages/Contact";
 function App() {
   return (
     <div className='w-screen min-h-screen bg-richblack-900 flex flex-col font-inter'>
@@ -43,6 +44,7 @@ function App() {
             <About />
           </OpenRoute>
         } />
+        <Route path="contact" element={<Contact />} />
       </Routes>
     </div>
   );
