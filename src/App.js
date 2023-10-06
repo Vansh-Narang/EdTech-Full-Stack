@@ -10,6 +10,7 @@ import UpdatePassword from './Pages/UpdatePassword';
 import VerfiyEmail from './Pages/VerfiyEmail';
 import About from './Pages/About';
 import Contact from "./Pages/Contact";
+import Dashboard from './Pages/Dashboard';
 function App() {
   return (
     <div className='w-screen min-h-screen bg-richblack-900 flex flex-col font-inter'>
@@ -45,6 +46,7 @@ function App() {
           </OpenRoute>
         } />
         <Route path="contact" element={<Contact />} />
+        <Route path="dashboard/my-profile" element={<Dashboard />} />
       </Routes>
     </div>
   );

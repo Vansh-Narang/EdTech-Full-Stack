@@ -1,5 +1,7 @@
-import React, { useSelector } from 'react'
-
+import React from 'react'
+import { useSelector } from "react-redux";
+import { Outlet } from "react-router-dom"
+import SideBar from '../components/core/Dashboard/Sidebar';
 function Dashboard() {
 
     const { loading: authLoading } = useSelector((state) => state.auth)
