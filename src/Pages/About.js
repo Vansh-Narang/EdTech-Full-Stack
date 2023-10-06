@@ -6,10 +6,10 @@ import FoundingStory from "../assets/asset 9.png"
 import StatsComponent from '../components/core/About/StatsComponent'
 import LearningGrid from '../components/core/About/LearningData'
 import ContactFormSection from '../components/core/About/ContactFormSection';
-
+import Footer from "../components/Common/Footer"
 function About() {
     return (
-        <div className='text-white mt-[100px] mx-auto w-11/12 max-w-maxContent'>
+        <div className='text-white mt-[100px] mx-auto w-11/12 '>
             {/* section 1 */}
             <section>
                 <div>
@@ -73,7 +73,14 @@ function About() {
                 <ContactFormSection />
             </section>
 
+            <section>
+                <div>
+                    Reviews from other learners
+                    {/* <ReviewSLider /> */}
+                </div>
+            </section>
 
+            <Footer />
         </div >
     )
 }

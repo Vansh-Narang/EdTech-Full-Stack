@@ -129,9 +129,6 @@ function ContactForm() {
                     }
                 </div>
 
-
-
-
                 {/* message */}
                 <div className='flex flex-col'>
                     <label htmlFor='message'>Message</label>
