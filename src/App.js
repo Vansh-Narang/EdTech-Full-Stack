@@ -14,6 +14,7 @@ import About from './Pages/About';
 import Contact from "./Pages/Contact";
 import Dashboard from './Pages/Dashboard';
 import MyProfile from './components/core/Dashboard/MyProfile';
+import EnrolledCourses from './components/core/Dashboard/EnrolledCourses';
 function App() {
   return (
     <div className='w-screen min-h-screen bg-richblack-900 flex flex-col font-inter'>
@@ -58,6 +59,7 @@ function App() {
         >
           <Route path="dashboard/my-profile" element={<MyProfile />} />
           {/* <Route path="dashboard/setting" element={<MyProfile />} /> */}
+          <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />
         </Route>
         <Route path="*" element={<Error />} />
       </Routes>
