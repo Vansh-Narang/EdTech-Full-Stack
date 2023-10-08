@@ -4,7 +4,7 @@ import Logo from "../../assets/asset 0.png"
 import { NavbarLinks } from "../../data/navbar-links"
 import { useLocation } from 'react-router-dom'
 import { useSelector } from "react-redux"
-import { AiOutlineShoppingCart } from "react-icons/ai"
+import { AiOutlineShoppingCart, AiOutlineMenu } from "react-icons/ai"
 import ProfileDropDown from "../core/Auth/ProfileDropDown"
 import { apiConnector } from '../../services/apiconnector'
 import { categories } from '../../services/apis'
@@ -62,7 +62,7 @@ function Navbar() {
                                                         {
                                                             subLinks.length ? (
                                                                 subLinks.map((subLink, index) => (
-                                                                    <Link to="/about" key={index}>
+                                                                    <Link to={subLink.path} key={index}>
                                                                         <p>{subLink.name}</p>
                                                                     </Link>
                                                                 )
@@ -126,6 +126,9 @@ function Navbar() {
                         token !== null && <ProfileDropDown />
                     }
                 </div>
+                <button className="mr-4 md:hidden">
+                    <AiOutlineMenu fontSize={24} fill="#AFB2BF" />
+                </button>
             </div>
 
         </div >
