@@ -1,4 +1,5 @@
 import './App.css';
+import Error from "./Pages/Error"
 import Home from "./Pages/Home"
 import Navbar from "./components/Common/Navbar"
 import { Route, Routes } from "react-router-dom"
@@ -8,9 +9,11 @@ import ForgotPassword from './Pages/ForgotPassword';
 import OpenRoute from "./components/core/Auth/OpenRoute"
 import UpdatePassword from './Pages/UpdatePassword';
 import VerfiyEmail from './Pages/VerfiyEmail';
+import PrivateRoute from './components/core/Auth/PrivateRoute';
 import About from './Pages/About';
 import Contact from "./Pages/Contact";
 import Dashboard from './Pages/Dashboard';
+import MyProfile from './components/core/Dashboard/MyProfile';
 function App() {
   return (
     <div className='w-screen min-h-screen bg-richblack-900 flex flex-col font-inter'>
@@ -46,7 +49,16 @@ function App() {
           </OpenRoute>
         } />
         <Route path="contact" element={<Contact />} />
-        <Route path="dashboard/my-profile" element={<Dashboard />} />
+        <Route
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
+          <Route path="dashboard/my-profile" element={<MyProfile />} />
+        </Route>
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );

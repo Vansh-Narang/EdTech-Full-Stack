@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import SidebarLink from './SidebarLink'
 import { VscSignOut } from 'react-icons/vsc'
 import ConfirmationModal from "../../Common/ConfirmationModal"
+
+
+
 function Sidebar() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -21,7 +24,7 @@ function Sidebar() {
         )
     }
     return (
-        <div className=''>
+        <div className='text-white'>
             <div className='flex flex-col min-w-[222px] border-r-[1px] border-r-richblack-700 h-[calc(100vh-3.5rem)] bg-richblack-800 py-10'>
                 <div className='flex flex-col'>
                     {
