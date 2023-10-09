@@ -2,7 +2,7 @@ import './App.css';
 import Error from "./Pages/Error"
 import Home from "./Pages/Home"
 import Navbar from "./components/Common/Navbar"
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useNavigate } from "react-router-dom"
 import Login from "./Pages/Login"
 import Signup from './Pages/Signup';
 import ForgotPassword from './Pages/ForgotPassword';
@@ -14,8 +14,15 @@ import About from './Pages/About';
 import Contact from "./Pages/Contact";
 import Dashboard from './Pages/Dashboard';
 import MyProfile from './components/core/Dashboard/MyProfile';
+import Cart from "./components/core/Dashboard/Cart/index"
 import EnrolledCourses from './components/core/Dashboard/EnrolledCourses';
+import { ACCOUNT_TYPE } from './utils/constants';
+import { useSelector, useDispatch } from 'react-redux';
 function App() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const { user } = useSelector((state) => state.profile)
   return (
     <div className='w-screen min-h-screen bg-richblack-900 flex flex-col font-inter'>
       <Navbar />
@@ -59,7 +66,15 @@ function App() {
         >
           <Route path="dashboard/my-profile" element={<MyProfile />} />
           {/* <Route path="dashboard/setting" element={<MyProfile />} /> */}
-          <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />
+
+          {
+            user?.accountType === ACCOUNT_TYPE.STUDENT && (
+              <>
+                <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />
+                <Route path="dashboard/cart" element={<Cart />} />
+              </>
+            )
+          }
         </Route>
         <Route path="*" element={<Error />} />
       </Routes>
