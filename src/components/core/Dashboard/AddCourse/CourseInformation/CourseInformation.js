@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCourseCategories } from "../../../../../services/Operations/CourseDetails"
 import { HiCurrencyDollar } from "react-icons/hi2"
+import RequirementField from './RequirementField'
 function CourseInformation() {
 
     const {
@@ -112,6 +113,50 @@ function CourseInformation() {
                     </span>
                 )}
             </div>
+
+            {/* Create a custom component for handling tags input */}
+            {/* <ChipInput
+                label="Tags"
+                name="courseTags"
+                placeholder="Enter tags and press enter"
+                register={register}
+                errors={errors}
+                setVaue={setValue}
+                getValues={getValues}/>
+                */}
+
+            {/* create a componet for uploading and showing preview of media */}
+            {/* <Upload name=
+                label=
+                register={register}
+                errors={errors}
+                setValue={setValue} /> */}
+
+            {/* Benefits of the course      */}
+            <div>
+                <label>Benefits of the course<sup>*</sup></label>
+                <textarea
+                    id="coursebenfits"
+                    placeholder='Enter benefits of the course'
+                    {...register("coursebenfits", { required: true })}
+                    className='min-h-[130px] w-full'
+                />
+                {errors.courseBenfits && (
+                    <span>
+                        Benefits of course required
+                    </span>
+                )}
+            </div>
+
+            <RequirementField
+                name="courseRequirements"
+                label="Requirements/Instructions"
+                register={register}
+                errors={errors}
+                setValue={setValue}
+                getValues={getValues}
+            />
+
         </form >
     )
 }
