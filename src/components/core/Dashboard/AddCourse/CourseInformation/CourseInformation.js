@@ -51,7 +51,7 @@ function CourseInformation() {
     }, [])
     const isFormUpdated = () => {
         const currentValues = getValues()
-        // console.log("changes after editing form values:", currentValues)
+        console.log("changes after editing form values:", currentValues)
         if (
             currentValues.courseTitle !== course.courseName ||
             currentValues.courseShortDesc !== course.courseDescription ||
@@ -69,6 +69,8 @@ function CourseInformation() {
     }
 
     const onSubmit = async (data) => {
+        console.log(data)
+        console.log("edited course: " + editCourse)
         //on clicking on next button
         if (editCourse) {
             // const currentValues = getValues()
@@ -98,21 +100,22 @@ function CourseInformation() {
                 if (currentValues.courseCategory._id !== course.category._id) {
                     formData.append("category", data.courseCategory)
                 }
-                // if (
-                //     currentValues.courseRequirements.toString() !==
-                //     course.instructions.toString()
-                // ) {
-                //     formData.append(
-                //         "instructions",
-                //         JSON.stringify(data.courseRequirements)
-                //     )
-                // }
-                if (currentValues.courseImage !== course.thumbnail) {
-                    formData.append("thumbnailImage", data.courseImage)
+                if (
+                    currentValues.courseRequirements.toString() !==
+                    course.instructions.toString()
+                ) {
+                    formData.append(
+                        "instructions",
+                        JSON.stringify(data.courseRequirements)
+                    )
                 }
+                // if (currentValues.courseImage !== course.thumbnail) {
+                //     formData.append("thumbnailImage", data.courseImage)
+                // }
                 // console.log("Edit Form data: ", formData)
                 setloading(true)
                 const result = await editCourseDetails(formData, token)
+                console.log("Printing result: ", result)
                 setloading(false)
                 if (result) {
                     dispatch(setStep(2))
@@ -123,19 +126,23 @@ function CourseInformation() {
             }
             return
         }
-
+        //create a new course
+        console.log("create new course")
         const formData = new FormData()
+        console.log("printing some data", data.courseTitle)
         formData.append("courseName", data.courseTitle)
-        formData.append("courseDescription", data.courseShortDesc)
-        formData.append("price", data.coursePrice)
-        formData.append("tag", JSON.stringify(data.courseTags))
-        formData.append("whatYouWillLearn", data.courseBenefits)
-        formData.append("category", data.courseCategory)
-        formData.append("status", COURSE_STATUS.DRAFT)
-        formData.append("instructions", JSON.stringify(data.courseRequirements))
-        formData.append("thumbnailImage", data.courseImage)
+        // formData.append("courseDescription", data.courseShortDesc)
+        // formData.append("price", data.coursePrice)
+        // formData.append("tag", JSON.stringify(data.courseTags))
+        // formData.append("whatYouWillLearn", data.courseBenefits)
+        // formData.append("category", data.courseCategory)
+        // formData.append("status", COURSE_STATUS.DRAFT)
+        // formData.append("instructions", JSON.stringify(data.courseRequirements))
+        // formData.append("thumbnailImage", data.courseImage)
+        console.log("form data ", formData)
         setloading(true)
         const result = await addCourseDetails(formData, token)
+        console.log(result)
         if (result) {
             dispatch(setStep(2))
             dispatch(setCourse(result))
@@ -258,20 +265,23 @@ function CourseInformation() {
                 setValue={setValue}
                 getValues={getValues}
             />
-            <div>
-                {
-                    editCourse && (
-                        <button
-                            onClick={() => dispatch(setStep(2))}
-                            className='flex items-center gap-x-2 bg-richblack-300'
-                        >
-                            Continue without saving
-                        </button>
-                    )
-                }
-                <IconButton
-                    text={!editCourse ? "Next" : "Save Changes"}
-                />
+            <div className="flex justify-end gap-x-2">
+                {editCourse && (
+                    <button
+                        onClick={() => dispatch(setStep(2))}
+                        disabled={loading}
+                        className={`flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900`}
+                    >
+                        Continue Wihout Saving
+                    </button>
+                )}
+                <div className="text-richblack-900 font-semibold bg-yellow-50 px-2 rounded-md border-pure-greys-300">
+                    <IconButton
+                        disabled={loading}
+                        text={!editCourse ? "Next" : "Save Changes"}
+                    >
+                    </IconButton>
+                </div>
             </div>
         </form >
     )
