@@ -250,7 +250,7 @@ export default function CourseInformationForm() {
                     </span>
                 )}
             </div>
-            Course Tags
+            {/* Course Tags */}
             {/* <ChipInput
                 label="Tags"
                 name="courseTags"
