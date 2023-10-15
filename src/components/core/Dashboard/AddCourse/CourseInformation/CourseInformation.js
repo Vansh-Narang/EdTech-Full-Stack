@@ -65,13 +65,12 @@ export default function CourseInformationForm() {
             currentValues.courseTitle !== course.courseName ||
             currentValues.courseShortDesc !== course.courseDescription ||
             currentValues.coursePrice !== course.price ||
-            //   currentValues.courseTags.toString() !== course.tag.toString() ||
+            // currentValues.courseTags.toString() !== course.tag.toString() ||
             currentValues.courseBenefits !== course.whatYouWillLearn ||
             currentValues.courseCategory._id !== course.category._id ||
             currentValues.courseRequirements.toString() !==
             course.instructions.toString()
-            // ||
-            //   currentValues.courseImage !== course.thumbnail
+            // || currentValues.courseImage !== course.thumbnail
         ) {
             return true
         }
@@ -80,7 +79,7 @@ export default function CourseInformationForm() {
 
     //   handle next button click
     const onSubmit = async (data) => {
-        // console.log(data)
+        console.log(data)
 
         if (editCourse) {
             // const currentValues = getValues()
@@ -99,14 +98,14 @@ export default function CourseInformationForm() {
                     formData.append("courseDescription", data.courseShortDesc)
                 }
                 if (currentValues.coursePrice !== course.price) {
-                    formData.append("price", data.coursePrice)
+                    formData.append("courseprice", data.coursePrice)
                 }
                 // if (currentValues.courseTags.toString() !== course.tag.toString()) {
                 //     formData.append("tag", JSON.stringify(data.courseTags))
                 // }
-                if (currentValues.courseBenefits !== course.whatYouWillLearn) {
-                    formData.append("whatYouWillLearn", data.courseBenefits)
-                }
+                // if (currentValues.courseBenefits !== course.whatYouWillLearn) {
+                //     formData.append("whatYouWillLearn", data.courseBenefits)
+                // }
                 if (currentValues.courseCategory._id !== course.category._id) {
                     formData.append("category", data.courseCategory)
                 }
@@ -122,7 +121,7 @@ export default function CourseInformationForm() {
                 // if (currentValues.courseImage !== course.thumbnail) {
                 //     formData.append("thumbnailImage", data.courseImage)
                 // }
-                console.log("Edit Form data: ", formData)
+                // console.log("Edit Form data: ", formData)
                 setLoading(true)
                 const result = await editCourseDetails(formData, token)
                 setLoading(false)
@@ -136,26 +135,28 @@ export default function CourseInformationForm() {
             return
         }
 
-        const formData = new FormData()
+        var formData = new FormData()
+        console.log("Hello")
         formData.append("courseName", data.courseTitle)
+        console.log(data.courseTitle)
         formData.append("courseDescription", data.courseShortDesc)
         formData.append("price", data.coursePrice)
-        //   formData.append("tag", JSON.stringify(data.courseTags))
-        formData.append("whatYouWillLearn", data.courseBenefits)
+        // formData.append("tag", JSON.stringify(data.courseTags))
+        // formData.append("whatYouWillLearn", data.courseBenefits)
         formData.append("category", data.courseCategory)
-        formData.append("status", COURSE_STATUS.DRAFT)
-        formData.append("instructions", JSON.stringify(data.courseRequirements))
-        //     formData.append("thumbnailImage", data.courseImage)
+        // formData.append("status", COURSE_STATUS.DRAFT)
+        // formData.append("instructions", JSON.stringify(data.courseRequirements))
+        // formData.append("thumbnailImage", data.courseImage)
         setLoading(true)
-        console.log(formData)
         const result = await addCourseDetails(formData, token)
+        console.log("Form data: ", formData)
+        console.log("result: ", result)
         if (result) {
             dispatch(setStep(2))
             dispatch(setCourse(result))
         }
         setLoading(false)
-        console.log("Form data", formData)
-        console.log("resullt", result);
+        toast.error("Could not move forward")
     }
 
     return (
@@ -182,13 +183,13 @@ export default function CourseInformationForm() {
             </div>
             {/* Course Short Description */}
             <div className="flex flex-col space-y-2">
-                <label className="text-sm text-richblack-5" htmlFor="courseShortDesc">
+                <label className="text-sm text-richblack-5" htmlFor="courseDescription">
                     Course Short Description <sup className="text-pink-200">*</sup>
                 </label>
                 <textarea
-                    id="courseShortDesc"
+                    id="courseDescription"
                     placeholder="Enter Description"
-                    {...register("courseShortDesc", { required: true })}
+                    {...register("courseDescription", { required: true })}
                     className="form-style resize-x-none min-h-[130px] w-full"
                 />
                 {errors.courseShortDesc && (
