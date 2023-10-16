@@ -5,7 +5,7 @@ import IconButton from "../../../../Common/IconButton"
 import { BiAddToQueue } from "react-icons/bi"
 import { BiRightArrow } from "react-icons/bi"
 import { toast } from "react-hot-toast"
-
+import { NestedView } from "../CourseBuilder/NestedView"
 const CourseBuilderForm = () => {
 
 
@@ -69,11 +69,17 @@ const CourseBuilderForm = () => {
         //if everything is ok
         dispatch(setStep(3))
     }
-
-
     const cancelEdit = () => {
         setSectionName(null)
         setValue("sectionName", " ")
+    }
+    const handleChangedEditSectionName = (sectionId, sectionName) => {
+        if (editSectionName === sectionId) {
+            cancelEdit()
+            return;
+        }
+        setSectionName(sectionId)
+        setValue("sectionName", sectionName)
     }
     return (
         <div className='text-white'>
@@ -116,7 +122,7 @@ const CourseBuilderForm = () => {
             {
                 // There is a course content length in the model of course which shows the section length 
                 course.courseContent.length > 0 && (
-                    <NestedView />
+                    <NestedView handleChangedEditSectionName={handleChangedEditSectionName} />
                 )
             }
             <div className='flex justify-end gap-x-3'>
