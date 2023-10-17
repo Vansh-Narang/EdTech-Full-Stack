@@ -27,11 +27,12 @@ export default function RenderSteps() {
     return (
         <>
             <div className="relative mb-2 flex w-full justify-center">
-                {steps.map((item) => (
+                {
+                steps.map((item,index) => (
                     <>
                         <div
                             className="flex flex-col items-center "
-                            key={item.id}
+                            key={index}
                         >
                             <button
                                 className={`grid cursor-default aspect-square w-[34px] place-items-center rounded-full border-[1px] ${step === item.id

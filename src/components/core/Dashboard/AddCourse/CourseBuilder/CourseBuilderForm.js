@@ -5,7 +5,12 @@ import IconButton from "../../../../Common/IconButton"
 import { BiAddToQueue } from "react-icons/bi"
 import { BiRightArrow } from "react-icons/bi"
 import { toast } from "react-hot-toast"
-import { NestedView } from "../CourseBuilder/NestedView"
+import { setCourse, setStep, setEditCourse } from "../../../../../slices/CourseSlice"
+import NestedView from "../CourseBuilder/NestedView"
+import {
+    updateSection,
+    createSection,
+} from "../../../../../services/Operations/CourseDetails"
 const CourseBuilderForm = () => {
 
 
