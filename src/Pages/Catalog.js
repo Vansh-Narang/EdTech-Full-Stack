@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Footer from "../components/Common/Footer"
 import { useParams } from 'react-router-dom'
 import { apiConnector } from "../services/apiconnector"
-import { categories } from '../services/apis'
+import { catalogData, categories } from '../services/apis'
 import { getCatalogaPageData } from "../services/Operations/pageandComponent"
 const Catalog = () => {
 
@@ -30,7 +30,7 @@ const Catalog = () => {
         const getCategoryDetails = async () => {
             try {
                 const res = await getCatalogaPageData(categoryId)
-                console.log("printing res", res?.data?.data)
+                console.log("printing res", res)
                 setCatalogPageData(res);
             } catch (error) {
                 console.log(error)
@@ -50,31 +50,53 @@ const Catalog = () => {
             <div className='text-white'>
                 {/* section 1 */}
                 <div>
-                    {/* <p>{`Home / Catalog /`}</p> */}
-                    <p></p>
-                    <p></p>
+                    <p>{`Home / Catalog /`}
+                        <span>
+                            {catalogPageData?.data?.selectedCategory?.name}
+                        </span>
+                    </p>
+                    <p>
+                        {catalogPageData?.data?.selectedCategory?.name}
+                    </p>
+                    <p>
+                        {catalogPageData?.data?.selectedCategory?.description}
+                    </p>
                 </div>
 
                 {/* Courses to bought */}
                 <div>
                     <div>
+                        <div>
+                            Courses to get you started
+                        </div>
                         <div className='flex gap-x-3'>
                             <p>Most Popular</p>
                             <p>New</p>
                         </div>
-                        {/* <CourseSlider /> */}
+                        <div>
+                            <CourseSlider Courses={catalogPageData?.data?.selectedCategory?.courses} />
+                        </div>
                     </div>
 
                     {/* section 2 */}
                     <div>
-                        <p>Top Courses</p>
+                        <p>Top Courses in {catalogPageData?.data?.selectedCategory?.name}</p>
                         <div>
-                            {/* <Slider /> */}
+                            <CourseSlider Courses={catalogPageData?.data?.differentCategory?.courses} />
                         </div>
                     </div>
                     {/* 3rd section */}
                     <div>
-                        <p>Frequently bought together</p>
+                        <div>Frequently bought together</div>
+                        <div className='py-8 '>
+                            <div className='grid grid-cols-1 lg:grid-cols-2'>
+                                {
+                                    catalogPageData?.data?.mostSellingCourses?.slice(0, 4).map((course, index) => (
+                                        <Course_Card course={course} key={index} Height={"h-[400px]"} />
+                                    ))
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <Footer />
