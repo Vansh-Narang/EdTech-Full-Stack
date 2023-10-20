@@ -8,7 +8,7 @@ const Course_Card = () => {
                     <img />
                 </div>
                 <div>
-                    <p></p>
+                    <p>Sliders</p>
                     <p></p>
                     <div>
                         <span></span>
