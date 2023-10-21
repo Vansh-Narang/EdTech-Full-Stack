@@ -32,7 +32,7 @@ const Catalog = () => {
         const getCategoryDetails = async () => {
             try {
                 const res = await getCatalogaPageData(categoryId)
-                console.log("printing res", res)
+                console.log("printing catalog page data", res)
                 setCatalogPageData(res);
             } catch (error) {
                 console.log(error)
@@ -81,19 +81,24 @@ const Catalog = () => {
                     </div>
 
                     {/* section 2 */}
-                    <div>
+                    <div className='text-white'>
                         <p>Top Courses in {catalogPageData?.data?.selectedCategory?.name}</p>
-                        <div>
+                        {/* <div>
                             <CourseSlider Courses={catalogPageData?.data?.differentCategory?.courses} />
-                        </div>
+                        </div> */}
                     </div>
                     {/* 3rd section */}
                     <div>
                         <div>Frequently bought together</div>
                         <div className='py-8 '>
                             <div className='grid grid-cols-1 lg:grid-cols-2'>
-                                {
+                                {/* {
                                     catalogPageData?.data?.mostSellingCourses?.slice(0, 4).map((course, index) => (
+                                        <Course_Card course={course} key={index} Height={"h-[400px]"} />
+                                    ))
+                                } */}
+                                {
+                                    catalogPageData?.data?.selectedCategory?.courses.slice(0, 4).map((course, index) => (
                                         <Course_Card course={course} key={index} Height={"h-[400px]"} />
                                     ))
                                 }
