@@ -82,10 +82,10 @@ const Catalog = () => {
 
                     {/* section 2 */}
                     <div className='text-white'>
-                        <p>Top Courses in {catalogPageData?.data?.selectedCategory?.name}</p>
-                        {/* <div>
+                        <p>Top Courses in {catalogPageData?.data?.differentCategory?.name}</p>
+                        <div>
                             <CourseSlider Courses={catalogPageData?.data?.differentCategory?.courses} />
-                        </div> */}
+                        </div>
                     </div>
                     {/* 3rd section */}
                     <div>
