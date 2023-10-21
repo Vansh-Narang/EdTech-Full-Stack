@@ -11,25 +11,23 @@ const Course_Card = ({ course, Height }) => {
         const count = GetAvgRating(course.ratingAndReviews)
         setAverageReviewCount(count)
     }, [course])
-
-
-
     return (
-        <div>
+        <div className='text-white'>
+            {/* <h1>{course}</h1> */}
             <Link to={`/courses/${course._id}`}>
-                <div>
+                <div >
                     <div>
                         <img src={thumbnail} alt='thumbnail' className={`${Height} w-full rounded-xl object-cover text-white`} />
                     </div>
                     <div>
-                        <p>{course.courseName}</p>
-                        <p>{course?.instructor?.firstName} {course?.instructor?.lastName}</p>
-                        <div>
+                        <p>{course?.courseName}</p>
+                        <p>{course?.instructor?.firstName} {course?.instructor?.lastName} instructor name error</p>
+                        <div className='flex gap-x-5'>
                             <span>{avgReviewCount || 0}</span>
                             <RatingStars Review_Count={avgReviewCount} />
                             <span>{course?.ratingAndReviews?.length} Ratings</span>
                         </div>
-                        <p>{course?.price}</p>
+                        <p>{course?.price} </p>
                     </div>
                 </div>
             </Link>
