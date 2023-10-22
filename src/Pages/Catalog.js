@@ -49,65 +49,82 @@ const Catalog = () => {
 
     return (
         <>
-            <div className='text-white'>
+            <div className='text-white  box-content bg-richblack-800 px-4'>
                 {/* section 1 */}
-                <div>
-                    <p>{`Home / Catalog /`}
-                        <span>
+                <div className="mx-auto flex min-h-[260px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent">
+                    <p className='text-richblack-100 tracking-wide'>{`Home / Catalog / `}
+                        <span className='text-yellow-50'>
                             {catalogPageData?.data?.selectedCategory?.name}
                         </span>
                     </p>
-                    <p>
+                    <p className='text-3xl tracking-wider'>
                         {catalogPageData?.data?.selectedCategory?.name}
                     </p>
-                    <p>
+                    <p className='tracking-wide text-richblack-100'>
                         {catalogPageData?.data?.selectedCategory?.description}
                     </p>
                 </div>
+            </div>
 
-                {/* Courses to bought */}
+            {/* Courses to bought */}
+            <div className='mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent text-white'>
                 <div>
-                    <div>
-                        <div>
-                            Courses to get you started
-                        </div>
-                        <div className='flex gap-x-3'>
-                            <p>Most Popular</p>
-                            <p>New</p>
-                        </div>
-                        <div>
-                            <CourseSlider Courses={catalogPageData?.data?.selectedCategory?.courses} />
-                        </div>
+                    <div className='font-bold text-4xl my-2'>
+                        Courses to get you started
                     </div>
+                    <div className='flex gap-x-3'>
+                        <p
+                            className={`px-4 py-2 ${active === 1
+                                    ? "border-b border-b-yellow-25 text-yellow-25"
+                                    : "text-richblack-50"
+                                } cursor-pointer`}
+                            onClick={() => setActive(1)}
+                        >
+                            Most Popular
+                        </p>
+                        <p
+                            className={`px-4 py-2 ${active === 2
+                                    ? "border-b border-b-yellow-25 text-yellow-25"
+                                    : "text-richblack-50"
+                                } cursor-pointer`}
+                            onClick={() => setActive(2)}
+                        >
+                            New
+                        </p>
+                    </div>
+                    <div>
+                        <CourseSlider Courses={catalogPageData?.data?.selectedCategory?.courses} />
+                    </div>
+                </div>
 
-                    {/* section 2 */}
-                    <div className='text-white'>
-                        <p>Top Courses in {catalogPageData?.data?.differentCategory?.name}</p>
-                        <div>
-                            <CourseSlider Courses={catalogPageData?.data?.differentCategory?.courses} />
-                        </div>
-                    </div>
-                    {/* 3rd section */}
+                {/* section 2 */}
+                <div className='text-white my-24'>
+                    <p className='font-bold text-4xl tracking-normal'>Top Courses in {catalogPageData?.data?.differentCategory?.name}</p>
                     <div>
-                        <div>Frequently bought together</div>
-                        <div className='py-8 '>
-                            <div className='grid grid-cols-1 lg:grid-cols-2'>
-                                {/* {
+                        <CourseSlider Courses={catalogPageData?.data?.differentCategory?.courses} />
+                    </div>
+                </div>
+                {/* 3rd section */}
+                <div className='text-white'>
+                    <div className='font-bold text-4xl'>Frequently bought together</div>
+                    <div className='py-8 '>
+                        <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
+                            {/* {
                                     catalogPageData?.data?.mostSellingCourses?.slice(0, 4).map((course, index) => (
                                         <Course_Card course={course} key={index} Height={"h-[400px]"} />
                                     ))
                                 } */}
-                                {
-                                    catalogPageData?.data?.selectedCategory?.courses.slice(0, 4).map((course, index) => (
-                                        <Course_Card course={course} key={index} Height={"h-[400px]"} />
-                                    ))
-                                }
-                            </div>
+                            {
+                                catalogPageData?.data?.selectedCategory?.courses.slice(0, 4).map((course, index) => (
+                                    <Course_Card course={course} key={index} Height={"h-[400px]"} />
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
-                <Footer />
             </div>
+            <Footer />
+
         </>
     )
 }
