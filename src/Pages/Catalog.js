@@ -11,6 +11,7 @@ const Catalog = () => {
 
 
     const { catalogName } = useParams();
+    const [active, setActive] = useState(1)
     const [catalogPageData, setCatalogPageData] = useState(null)
     const [categoryId, setCategoryId] = useState("")
 
@@ -72,11 +73,11 @@ const Catalog = () => {
                     <div className='font-bold text-4xl my-2'>
                         Courses to get you started
                     </div>
-                    <div className='flex gap-x-3'>
+                    <div className='flex gap-x-3 border-b-2 border-richblack-400 my-2'>
                         <p
                             className={`px-4 py-2 ${active === 1
-                                    ? "border-b border-b-yellow-25 text-yellow-25"
-                                    : "text-richblack-50"
+                                ? "border-b border-b-yellow-25 text-yellow-25"
+                                : "text-richblack-50"
                                 } cursor-pointer`}
                             onClick={() => setActive(1)}
                         >
@@ -84,8 +85,8 @@ const Catalog = () => {
                         </p>
                         <p
                             className={`px-4 py-2 ${active === 2
-                                    ? "border-b border-b-yellow-25 text-yellow-25"
-                                    : "text-richblack-50"
+                                ? "border-b border-b-yellow-25 text-yellow-25"
+                                : "text-richblack-50"
                                 } cursor-pointer`}
                             onClick={() => setActive(2)}
                         >
