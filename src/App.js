@@ -21,6 +21,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import AddCourse from './components/core/Dashboard/AddCourse';
 import Catalog from './Pages/Catalog';
 import ViewCourse from './Pages/ViewCourse';
+import CourseDetails from './Pages/CourseDetails';
 function App() {
 
   const dispatch = useDispatch()
@@ -33,6 +34,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog/:catalogName" element={<Catalog />} />
+        <Route path="courses/:courseId" element={<CourseDetails />} />
         <Route path='login' element={
           <OpenRoute>
             <Login />
@@ -86,7 +88,7 @@ function App() {
             )
           }
         </Route>
-        <Route path="/courses/:id" element={
+        <Route element={
           <PrivateRoute>
             <ViewCourse />
           </PrivateRoute>

@@ -19,7 +19,7 @@ const Course_Card = ({ course, Height }) => {
             <Link to={`/courses/${course._id}`}>
                 <div >
                     <div>
-                        <img src={thumbnail} alt='thumbnail' className={`${Height} w-full rounded-xl object-cover text-white`} />
+                        <img src={course?.thumbnail || thumbnail} alt='thumbnail' className={`${Height} w-full rounded-xl object-cover text-white`} />
                     </div>
                     <div>
                         <p className='text-xl font-medium my-2'>{course?.courseName}</p>
