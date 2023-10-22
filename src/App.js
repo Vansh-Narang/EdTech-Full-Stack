@@ -20,7 +20,9 @@ import { ACCOUNT_TYPE } from './utils/constants';
 import { useSelector, useDispatch } from 'react-redux';
 import AddCourse from './components/core/Dashboard/AddCourse';
 import Catalog from './Pages/Catalog';
+import ViewCourse from './Pages/ViewCourse';
 function App() {
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -84,6 +86,25 @@ function App() {
             )
           }
         </Route>
+        <Route path="/courses/:id" element={
+          <PrivateRoute>
+            <ViewCourse />
+          </PrivateRoute>
+        }>
+
+          {/* {
+            user?.accountType === ACCOUNT_TYPE.STUDENT && (
+              <>
+                <Route
+                  path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId"
+                  element={<VideoDetails />}
+                />
+              </>
+            )
+          } */}
+
+        </Route>
+
         <Route path="*" element={<Error />} />
       </Routes>
     </div>

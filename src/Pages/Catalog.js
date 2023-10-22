@@ -76,7 +76,7 @@ const Catalog = () => {
                     <div className='flex gap-x-3 border-b-2 border-richblack-400 my-2'>
                         <p
                             className={`px-4 py-2 ${active === 1
-                                ? "border-b border-b-yellow-25 text-yellow-25"
+                                ? "border-b-2 border-b-yellow-25 text-yellow-25"
                                 : "text-richblack-50"
                                 } cursor-pointer`}
                             onClick={() => setActive(1)}
@@ -85,7 +85,7 @@ const Catalog = () => {
                         </p>
                         <p
                             className={`px-4 py-2 ${active === 2
-                                ? "border-b border-b-yellow-25 text-yellow-25"
+                                ? "border-b-2 border-b-yellow-25 text-yellow-25"
                                 : "text-richblack-50"
                                 } cursor-pointer`}
                             onClick={() => setActive(2)}
@@ -100,7 +100,7 @@ const Catalog = () => {
 
                 {/* section 2 */}
                 <div className='text-white my-24'>
-                    <p className='font-bold text-4xl tracking-normal'>Top Courses in {catalogPageData?.data?.differentCategory?.name}</p>
+                    <p className='font-bold text-4xl tracking-normal my-4'>Top Courses in {catalogPageData?.data?.differentCategory?.name}</p>
                     <div>
                         <CourseSlider Courses={catalogPageData?.data?.differentCategory?.courses} />
                     </div>

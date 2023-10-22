@@ -6,6 +6,9 @@ import thumbnail from "../../../assets/asset 5.png"
 const Course_Card = ({ course, Height }) => {
 
     const [avgReviewCount, setAverageReviewCount] = useState(0)
+
+
+
     useEffect(() => {
         const count = GetAvgRating(course.ratingAndReviews)
         setAverageReviewCount(count)
