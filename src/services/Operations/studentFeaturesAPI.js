@@ -10,6 +10,7 @@ import rzpLogo from "../../assets/asset 0.png"
 const { COURSE_PAYMENT_API, COURSE_VERIFY_API, SEND_PAYMENT_SUCCESS_EMAIL_API } = studentEndpoints;
 
 function loadScript(src) {
+    //load script in runtime
     return new Promise((resolve, reject) => {
         const script = document.createElement("script")
         script.src = src;
@@ -58,9 +59,7 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
             handler: function (response) {
                 //successful wala email
                 sendPaymentSucessEmail(response, orderResponse.data.data.amount, token)
-
                 //verify payment
-
                 verifyPayment({ ...response, courses }, token, navigate, dispatch)
 
             }
@@ -74,4 +73,38 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
 
 }
 
-// async function sendPaymentSucessEmail(response,)
+async function sendPaymentSucessEmail(response, amount, token) {
+    try {
+        await apiConnector("POST", SEND_PAYMENT_SUCCESS_EMAIL_API, {
+            order_id: response.razorpay_order_id,
+
+        }), {
+            Authorization: `Bearer ${token}`,
+        }
+    } catch (error) {
+        console.log("Payment Success email error", error)
+    }
+}
+
+
+//verify payment
+async function verifyPayment(body, token, navigate, dispatch) {
+    const toastId = toast.loading("Verifying payment...")
+    dispatch(setPaymentLoading(true))
+    try {
+        const response = await apiConnector("POST", COURSE_VERIFY_API, bodyData, {
+            Authorization: `Bearer ${token}`,
+        })
+        if (!response.data.success) {
+            throw new Error(response.data.message)
+        }
+        toast.success("Payment successful, added to the course")
+        navigate("/dasboard/enrolled-courses")
+        dispatch(resetCart())
+    } catch (error) {
+        console.log("payment verification error", error)
+        toast.error("payment verification error")
+    }
+    toast.dismiss(toastId)
+    dispatch(setPaymentLoading(false))
+}
