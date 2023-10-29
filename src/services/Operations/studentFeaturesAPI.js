@@ -92,7 +92,7 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
 async function sendPaymentSucessEmail(response, amount, token) {
     try {
         await apiConnector("POST", SEND_PAYMENT_SUCCESS_EMAIL_API, {
-            order_id: response.razorpay_order_id,
+            orderId: response.razorpay_order_id,
             paymentId: response.razorpay_payment_id,
             amount
         }, {
