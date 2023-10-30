@@ -96,6 +96,20 @@ const CourseDetails = () => {
         instructor,
         createdAt
     } = courseData.data?.courseDetails
+
+    //means empty array (saare close by default)
+    const [isActive, setIsActive] = useState(Array(0))
+
+
+    const handleClick = (id) => {
+        setIsActive(
+            //agar nahi includes hai array me to include kro agar hai to exclude it
+            //(basically it is a toggle array)
+            !isActive.includes(id)
+                ? isActive.concat(id)
+                : isActive.filter((e) => e != id)
+        )
+    }
     return (
         <div className='flex flex-col items-center text-white'>
             <div className='relative flex flex-col justify-start p-8'>
@@ -124,6 +138,36 @@ const CourseDetails = () => {
                         setConfirmationModal={setConfirmationModal}
                         handleBuyCourse={handleBuyCourse}
                     />
+                </div>
+                <div>
+                    <p>What you will learn</p>
+                    <div>
+                        {whatYouWillLearn}
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <p>Course Content :</p>
+                </div>
+                <div className='flex gap-x-3 justify-between'>
+                    <div>
+                        <span>{courseContent.length} sections</span>
+                        <span>
+                            {totalNoofLectures.length} lectures
+                        </span>
+                        <span>
+                            {courseData?.data?.totalDuration} total Length
+                        </span>
+                        <div>
+                            {/* set is active will be empty if clicked on collapse all sections as it will remove them from active state */}
+                            <button onClick={() => setIsActive([])}>
+                                Collapse all sections
+                            </button>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
             {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
