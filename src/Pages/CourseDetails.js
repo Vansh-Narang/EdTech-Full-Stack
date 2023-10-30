@@ -7,6 +7,7 @@ import GetAvgRating from "../utils/averageRating"
 import ConfirmationModal from "../components/Common/ConfirmationModal"
 import Error from "../Pages/Error"
 import RatingStars from "../components/Common/RatingStars"
+import CourseDetailsCard from "../components/core/Course/CourseDetailsCard"
 const CourseDetails = () => {
 
     const { user } = useSelector((state) => state.profile)
@@ -24,7 +25,7 @@ const CourseDetails = () => {
         //saare course ki details backend me hai function
         const getCourseFullDetails = async () => {
             try {
-                const result = await fetchCourseDetails("6531547b20de90cbfad4554b");
+                const result = await fetchCourseDetails("653e88e53f37930a20db2c38");
                 console.log("Result: " + result)
                 setCourseData(result)
             } catch (error) {
@@ -97,16 +98,34 @@ const CourseDetails = () => {
     } = courseData.data?.courseDetails
     return (
         <div className='flex flex-col items-center text-white'>
-            <p>{courseName}</p>
-            <p>{courseDescription}</p>
-            <div className='text-white'>
-                <span> {avgReviewCount}</span>
-                <RatingStars Review_Count={avgReviewCount} Star_Size={24} />
-                {/* <span>{`(${ratingAndReviews.length} reviews)`}</span> */}
-                {/* <span>{`(${studentsEnrolled.length} students Enrolled)`}</span> */}
-
+            <div className='relative flex flex-col justify-start p-8'>
+                <p>{courseName}</p>
+                <p>{courseDescription}</p>
+                <div className='text-white flex gap-x-2'>
+                    <span> {avgReviewCount}</span>
+                    <RatingStars Review_Count={avgReviewCount} Star_Size={24} />
+                    <span>{`(${ratingAndReviews.length} reviews)`}</span>
+                    <span>{`(${studentsEnrolled.length} students Enrolled)`}</span>
+                </div>
+                <div>
+                    <p>Created by {`${instructor.firstName}`}</p>
+                </div>
+                <div className='flex gap-x-3'>
+                    <p>
+                        Created at {formatDate(createdAt)}
+                    </p>
+                    <p>
+                        {" "} English
+                    </p>
+                </div>
+                <div>
+                    <CourseDetailsCard
+                        course={courseData?.data?.courseDetails}
+                        setConfirmationModal={setConfirmationModal}
+                        handleBuyCourse={handleBuyCourse}
+                    />
+                </div>
             </div>
-
             {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
         </div>
     )
