@@ -1,6 +1,7 @@
 import './App.css';
 import Error from "./Pages/Error"
 import Home from "./Pages/Home"
+import EditCourse from "./components/core/Dashboard/EditCourse";
 import Navbar from "./components/Common/Navbar"
 import { Route, Routes, useNavigate } from "react-router-dom"
 import Login from "./Pages/Login"
@@ -68,7 +69,7 @@ function App() {
           }
         >
           <Route path="dashboard/my-profile" element={<MyProfile />} />
-          {/* <Route path="dashboard/setting" element={<MyProfile />} /> */}
+          <Route path="dashboard/settings" element={<Settings />} />
 
           {
             user?.accountType === ACCOUNT_TYPE.STUDENT && (
