@@ -5,6 +5,7 @@ import EditCourse from "./components/core/Dashboard/EditCourse";
 import Navbar from "./components/Common/Navbar"
 import { Route, Routes, useNavigate } from "react-router-dom"
 import Login from "./Pages/Login"
+import Settings from "./components/core/Settings/settings"
 import Signup from './Pages/Signup';
 import ForgotPassword from './Pages/ForgotPassword';
 import OpenRoute from "./components/core/Auth/OpenRoute"

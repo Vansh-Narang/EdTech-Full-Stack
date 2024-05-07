@@ -33,7 +33,7 @@ const MyProfile = () => {
                         navigate("/dashboard/settings")
                     }}
                 >
-                    <RiEditBoxLine />
+                    <RiEditBoxLine className='text-richblack-100' />
                 </IconButton>
             </div>
             <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
@@ -45,7 +45,7 @@ const MyProfile = () => {
                             navigate("/dashboard/settings")
                         }}
                     >
-                        <RiEditBoxLine />
+                        <RiEditBoxLine className='text-richblack-100' />
                     </IconButton>
                 </div>
                 <p
@@ -68,7 +68,7 @@ const MyProfile = () => {
                             navigate("/dashboard/settings")
                         }}
                     >
-                        <RiEditBoxLine />
+                        <RiEditBoxLine className='text-richblack-100' />
                     </IconButton>
                 </div>
                 <div className="flex max-w-[500px] justify-between">

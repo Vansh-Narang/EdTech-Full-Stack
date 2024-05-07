@@ -8,14 +8,14 @@ const contactDetails = [
         icon: "HiChatBubbleLeftRight",
         heading: "Chat on us",
         description: "Our friendly team is here to help.",
-        details: "sagar769singh@gmail.com",
+        details: "vanshnarang49906@gmail.com",
     },
     {
         icon: "BiWorld",
         heading: "Visit us",
         description: "Come and say hello at our office HQ.",
         details:
-            "Sec - 14 Ring Road, Vikas Nagar, Lucknow - 226022",
+            "India",
     },
     {
         icon: "IoCall",

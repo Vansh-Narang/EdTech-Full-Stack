@@ -8,7 +8,7 @@ function IconButton({ text, onclick, children, disabled, outline = false, custom
             {
                 children ? (
                     <>
-                        <span>
+                        <span className='text-richblack-100'>
                             {text}
                         </span>
                         {children}
